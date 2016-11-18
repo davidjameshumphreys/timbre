@@ -1,4 +1,4 @@
-(defproject com.taoensso/timbre "4.7.4"
+(defproject com.taoensso/timbre "4.7.8"
   :author "Peter Taoussanis <https://www.taoensso.com>"
   :description "Pure Clojure/Script logging library"
   :url "https://github.com/ptaoussanis/timbre"
@@ -90,5 +90,8 @@
    "deploy-lib" ["do" "build-once," "deploy" "clojars," "install"]
    "start-dev"  ["with-profile" "+dev" "repl" ":headless"]}
 
-  :repositories {"sonatype-oss-public"
-                 "https://oss.sonatype.org/content/groups/public/"})
+  :deploy-repositories
+  ^:replace {"releases" {:url           "http://nexus.cncommerce.co.uk:8081/nexus/content/repositories/releases/"
+                         :username      :env/nexus_username
+                         :password      :env/nexus_password
+                         :sign-releases false}})
